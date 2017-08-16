@@ -19,13 +19,13 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+pos_cost = -y.*log(sigmoid(X*theta));
+neg_cost = -(1-y).*log(1-sigmoid(X*theta));
 
+J = sum(pos_cost + neg_cost)/m;
 
-
-
-
-
-
+d = sigmoid(X*theta) - y;
+grad = (sum(d.*X)./m)';
 
 % =============================================================
 

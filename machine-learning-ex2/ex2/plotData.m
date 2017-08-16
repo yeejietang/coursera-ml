@@ -12,17 +12,19 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+pos = find(y==1); % Find indices of positive examples
+neg = find(y==0); % Find indices of negative examples
 
-
-
-
-
-
-
+plot(X(pos,1), X(pos,2), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
+plot(X(neg,1), X(neg,2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 
 % =========================================================================
 
-
+% ====================== ALTERNATIVE ======================
+% 
+% gscatter(X(:,1),X(:,2),y,'kk','o+')
+% 
+% =========================================================================
 
 hold off;
 
