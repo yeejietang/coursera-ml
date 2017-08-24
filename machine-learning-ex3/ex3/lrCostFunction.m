@@ -35,14 +35,20 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+pos_cost = -y.*log(sigmoid(X*theta));
+neg_cost = -(1-y).*log(1-sigmoid(X*theta));
+squared_thetas = (theta(2:end,:)).^2;
 
+J = (sum(pos_cost + neg_cost)/m) + (lambda*sum(squared_thetas)/2/m) ;
 
+% ====================== GRADIENT ============================
 
+d = sigmoid(X*theta) - y;
 
+penal_cost = lambda/m*theta;
+penal_cost(1) = 0;
 
-
-
-
+grad = (sum(d.*X)./m)' + penal_cost;
 
 
 % =============================================================
