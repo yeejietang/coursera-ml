@@ -21,15 +21,24 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% add ones to layer 1
+X = [ones(m, 1) X];
 
+% compute activation of layer 2
+X = sigmoid(X * Theta1');
 
+% add ones to layer 2
+X = [ones(m, 1) X]; 
 
+% compute activation of layer 3
+pred = sigmoid(X * Theta2');
 
+% find max value and index of column for each row in layer 3
+[V I] = max(pred, [], 2);
 
-
-
+% assign index to prediction value
+p = I;
 
 % =========================================================================
-
 
 end
