@@ -29,7 +29,7 @@ step_values = [0.01 0.03 0.1 0.3 1 3 10 30];
 error_matrix = zeros(length(step_values)^2, 3);
 
 % initialize error_matrix row index
-errmatrix_index = 1
+errmatrix_index = 1;
 
 for c_index = 1:length(step_values)
 	for sigma_index = 1:length(step_values)
