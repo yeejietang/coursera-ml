@@ -21,11 +21,19 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+% Initialize distance matrix of m x K dimension
+D = zeros(size(X,1), K);
 
+% Looping over K centroids
+for j = 1:K
+	% For each centroid, find element-wise distance of X from centroid
+	d_elems = bsxfun(@minus, X, centroids(j, :));
+	% Assign sum of squared element-wise distances to column in D that corresponds to centroid
+	D(:, j) = sum(d_elems.^2, 2);
+end
 
-
-
-
+% Find index of minimum distance in D
+[Y, idx] = min(D, [], 2);
 
 % =============================================================
 
