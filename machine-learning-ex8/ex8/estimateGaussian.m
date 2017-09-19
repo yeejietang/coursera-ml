@@ -19,18 +19,14 @@ sigma2 = zeros(n, 1);
 %               In particular, mu(i) should contain the mean of
 %               the data for the i-th feature and sigma2(i)
 %               should contain variance of the i-th feature.
-%
 
+mu = mean(X)';
 
-
-
-
-
-
-
-
+% default var(X) does not exactly give the variance normalized over the entire set. Why?
+% var(X) = var(X,0) which divides the squared differences over (m - 1)
+% var(X,1) divides the squared differences over (m), which is what we want
+sigma2 = var(X,1)';
 
 % =============================================================
-
 
 end

@@ -13,7 +13,9 @@
 %
 %  For this exercise, you will not need to change any code in this file,
 %  or any other files other than those mentioned above.
-%
+
+%% Initialization
+clear ; close all; clc
 
 %% =============== Part 1: Loading movie ratings dataset ================
 %  You will start by loading the movie ratings dataset to understand the

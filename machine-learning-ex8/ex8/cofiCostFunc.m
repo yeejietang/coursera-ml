@@ -40,20 +40,22 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+% Find difference term
+d = ((X * Theta') - Y);
 
+% Unregularized cost is sum over squared differences where R == 1
+J = sum(sum(R.*(d.^2)))/2;
 
+% Unregularized gradient
+X_grad = (R.*d)*Theta;
+Theta_grad = ((R.*d)'*X);
 
+% Add regularization to cost
+J = J + (sum(sum(Theta.^2))*lambda/2) + (sum(sum(X.^2))*lambda/2);
 
-
-
-
-
-
-
-
-
-
-
+% Add regularization to gradients
+X_grad = X_grad + bsxfun(@times, X, lambda);
+Theta_grad = Theta_grad + bsxfun(@times, Theta, lambda);
 
 % =============================================================
 
